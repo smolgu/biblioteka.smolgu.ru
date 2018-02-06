@@ -1,1 +1,1 @@
-web: lib web -m=prod
+web: lib web -m=prod -c=/storage/conf/app.ini
