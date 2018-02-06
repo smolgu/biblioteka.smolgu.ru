@@ -1,0 +1,91 @@
+<div><a href="/{{.page.OldId}}">Перейти на страницу</a></div>
+
+<form action="" method="post">
+	<div class="form-group">
+		<label for="">Заголовок</label>
+		<input type="text" name="title" value="{{.page.Title}}" id="" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="">Слаг (оставляйте пустым)</label>
+		<input type="text" name="slug" value="{{.page.Slug}}" id="" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="">Дата (В формате ГГГГ-ММ-ДД чч:мм)</label>
+		<input type="text" name="date" value="{{.page.Date.Format "2006-01-02 15:04"}}" id="" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="">Текст</label>
+		<textarea name="body" id="" cols="30" rows="10" class="form-control">{{.page.Body}}</textarea>
+	</div>
+	<div class="form-group">
+		<label for="">Тэги</label>
+		<input type="text" name="tags" value="{{str_join .page.Tags ", "}}" id="" class="form-control">
+	</div>
+	<div id="imgList">
+{{if .page.Image}}
+<input class="form-control" type="text" name="images[]" value="{{.page.Image}}"><br>
+{{range .page.Images}}
+<input class="form-control" type="text" name="images[]" value="{{.}}"><br>
+{{end}}
+{{end}}
+
+	</div>
+	<div class="form-control">
+		<button>Опубликовать</button>
+	</div>
+</form>
+<div class="">
+	<label for="addFile">
+		<img src="/static/img/plus.jpg" height="100px" float=left alt="">
+	</label>
+
+	<input type="file" id="addFile" accept="image/*" style="display:none" onchange="upload();">
+</div>
+<div class="images">
+{{if .page.Image}}
+<img src="{{.page.Image}}" height="100px">
+{{range .page.Images}}
+<img src="{{.}}" height="100px">
+{{end}}
+{{end}}
+</div>
+<div class="loader" style="display:none;"></div>
+<script>
+var images = document.querySelector(".images");
+var il = document.getElementById("imgList");
+var loader = document.querySelector(".loader");
+
+
+function upload() {
+	loader.style.display = "";
+	var af = document.getElementById('addFile');
+	var form = new FormData();
+	form.append("file",af.files[0])
+	xhr = new XMLHttpRequest();
+	xhr.open('POST', '/upload', true);
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+	     if(xhr.status == 200) {
+	       callback(xhr.responseText)
+	      }
+	  }
+	};
+
+	xhr.send(form);
+}
+function callback(str) {
+	i=new Image();
+
+	var jp = JSON.parse(str)
+
+	i.src = jp.img_small;
+	i.style.maxWidth = "100%";
+	images.appendChild(i);
+	var x = document.createElement("INPUT");
+	x.setAttribute("type", "text");
+	x.setAttribute("name","images[]");
+	x.setAttribute("value",jp.img_path)
+	il.appendChild(x)
+	loader.style.display = "none";
+}
+</script>

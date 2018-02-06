@@ -1,0 +1,67 @@
+<h2>Загрузить выпускную квалификационную работу</h2>
+<form action="" method="post" enctype="multipart/form-data">
+<div class="form-group">
+<label for="">Заголовок</label>
+<input class="form-control" type="text" name="title" placeholder="Заголовок">
+</div>
+<div class="form-group">
+<label for="">Фамилия</label>
+<input class="form-control" type="text" name="last_name" placeholder="Фамилия">
+</div>
+<div class="form-group">
+<label for="">Имя</label>
+<input class="form-control" type="text" name="first_name" placeholder="Имя">
+</div>
+<div class="form-group">
+<label for="">Отчество</label>
+<input class="form-control" type="text" name="patronymic" placeholder="Отчество">
+</div>
+
+	
+<div class="form-group">
+<label for="">Факультет</label>
+<select class="form-control"  name="faculty" id="">
+{{range .faculties}}
+<option value="{{.Id}}">{{.Title}}</option>
+{{end}}	
+</select>
+</div>
+
+<div class="form-group">
+<label for="">Направление подготовки</label>
+<select class="form-control"  name="training_direction" id="">
+{{range .dirs}}
+<option value="{{.Id}}">{{.Title}}</option>
+{{end}}	
+</select>
+</div>
+
+<div class="form-group">
+<label for="">Степень</label>
+<select class="form-control"  name="level" id="">
+<option value="бакалавр">Бакалавр</option>
+<option value="магистр">Магистр</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="">Форма обучения</label>
+<select class="form-control"  name="level" id="">
+<option value="очное">Очное</option>
+<option value="заочное">Заочное</option>
+<option value="вечернее">Вечернее</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="">Год выпуска</label>
+<input class="form-control" type="text" name="year" placeholder="Год">
+</div>
+
+<div class="form-group">
+	<label for="">Файл ПДФ</label>
+	<input type="file" name="file" id="">
+</div>
+
+<button>Сохранить</button>
+</form>

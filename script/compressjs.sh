@@ -1,0 +1,1 @@
+java -jar bin/compiler.jar --js static/js/ban.js --js static/js/dropzone.min.js --js static/js/main.js --js static/js/to-top.js --js static/js/bel.js --js_output_file static/js/main.min.js

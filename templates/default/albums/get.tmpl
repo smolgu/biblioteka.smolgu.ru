@@ -1,0 +1,8 @@
+{{range .album.Photos}}
+<a href="/albums/blob/{{.BlobId}}.jpg" class="fancybox" rel="album"><img class="lazy" data-original="/albums/blob/{{.BlobId}}.jpg" width="100%"></a>
+{{end}}
+{{if  .IsSigned}}
+{{if .IsAdmin}}
+<link rel="stylesheet" type="text/css" href="/{{build_hash}}/css/dropzone.min.css">
+<form action="/albums/{{.album.Id}}/upload" class="dropzone" id="dropzone" enctype="multipart/form-data"></form>
+{{end}}{{end}}

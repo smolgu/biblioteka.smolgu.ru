@@ -1,0 +1,126 @@
+<form action="" method="post">
+	<div class="form-group">
+		<label for="">Заголовок</label>
+		<input type="text" name="title" value="{{.page.Title}}" id="" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="">Слаг (оставляйте пустым)</label>
+		<input type="text" name="slug" value="{{.page.Slug}}" id="" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="">Дата (В формате ГГГГ-ММ-ДД чч:мм)</label>
+		<input type="text" name="date" value="{{.page.Date.Format "2006-01-02 15:04"}}" id="" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="">Текст</label>
+		<textarea name="body" id="" cols="30" rows="10" class="form-control">{{.page.Body}}</textarea>
+	</div>
+	<div class="form-group">
+		<label for="cat">Категория</label>
+		<select name="category" id="cat">
+			<option {{if eq .page.Category 1}}selected{{end}} value="1">Новости</option>
+			<option {{if eq .page.Category 2}}selected{{end}} value="2">2</option>
+			<option {{if eq .page.Category 7}}selected{{end}} value="7">Художники</option>
+		</select>
+		<input type="text" name="date" value="{{.page.Date.Format "2006-01-02 15:04"}}" id="" class="form-control">
+	</div>
+	<div style="display:none;" id="imgList">
+{{if .page.Image}}
+<input type="text" name="images[]" value="{{.page.Image}}">
+{{range .page.Images}}
+<input type="text" name="images[]" value="{{.}}">
+{{end}}
+{{end}}
+
+	</div>
+	<div class="form-group">
+		<label for="post_in_vk">Опубликовать ВКонтакте</label>
+		<input id="post_in_vk" type="checkbox" name="post_in_vk" value="true">
+	</div>
+	<div class="form-control">
+		<button>Опубликовать</button>
+	</div>
+</form>
+<div class="">
+{{if .page.Image}}
+<div class="img-delete-container">
+	<img height="100px" src="{{imgUrl .page.Image}}" class="" alt="">
+	<div class="img-delete" data-src={{.page.Image}}>Удалить</div>
+</div>
+
+{{range .page.Images}}
+<div class="img-delete-container">
+	<img height="100px" src="{{imgUrl . "true"}}" class="" alt="">
+	<div class="img-delete" data-src={{.}}>Удалить</div>
+</div>
+{{end}}
+{{end}}
+	<label for="addFile">
+		<img src="/static/img/plus.jpg" height="100px" float=left alt="">
+	</label>
+
+	<input type="file"  accept="image/*" id="addFile" style="display:none" onchange="upload();">
+</div>
+<div class="images"></div>
+<div class="loader" style="display:none;"></div>
+<script>
+var images = document.querySelector(".images");
+var il = document.getElementById("imgList");
+var loader = document.querySelector(".loader");
+
+
+function upload() {
+	loader.style.display = "";
+	var af = document.getElementById('addFile');
+	var form = new FormData();
+	form.append("file",af.files[0])
+	xhr = new XMLHttpRequest();
+	xhr.open('POST', '/upload', true);
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+	     if(xhr.status == 200) {
+	       callback(xhr.responseText)
+	      }
+	  }
+	};
+
+	xhr.send(form);
+}
+function callback(str) {
+	i=new Image();
+
+	var jp = JSON.parse(str)
+
+	i.src = jp.img_small;
+	i.style.maxWidth = "100%";
+	images.appendChild(i);
+	var x = document.createElement("INPUT");
+	x.setAttribute("type", "text");
+	x.setAttribute("name","images[]");
+	x.setAttribute("value",jp.img_path)
+	il.appendChild(x)
+	loader.style.display = "none";
+}
+
+
+var elements = document.querySelectorAll(".img-delete");
+for (var i = 0; i < elements.length; i++) {
+	elements[i].addEventListener('click', function(event) {
+		var il = document.querySelectorAll("#imgList input");
+		console.log(event.target.dataset.src)
+        if (!confirm("Вы точно хотите удалить изображение?")) {
+            event.preventDefault();
+        }else {
+        	var src = event.target.dataset.src;
+        	for (var j = 0; j < il.length; j++) {
+        		if (il[j].value === src) {
+        			il[j].remove();
+        			break;
+        		}
+        	}
+        	event.target.parentNode.remove();
+        }
+    });
+}
+
+</script>

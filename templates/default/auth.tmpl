@@ -1,0 +1,21 @@
+{{if .Flash.ErrorMsg}}
+<div class="err">
+{{.Flash.ErrorMsg}}
+</div>
+{{end}}
+{{if .Flash.SuccessMsg}}
+<div class="success">
+{{.Flash.SuccessMsg}}
+</div>
+{{end}}
+<form action="" method="post">
+	<div class="form-group">
+		<label for="email">Введите ваш e-mail</label>
+		<input class="form-control" type="email" name="email" id="email" placeholder="email">
+	</div>
+	<div class="form-group">
+		<label for="password">Пароль</label>
+		<input class="form-control" type="password" name="password" id="password" placeholder="пароль">
+	</div>
+	<button>Войти</button>	
+</form>

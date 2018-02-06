@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Библиотека СмолГУ</title>
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/{{build_hash}}/css/normalize.css">
+  <link rel="stylesheet" href="/{{build_hash}}/css/main-new.css">
+  <link rel="stylesheet" type="text/css" href="/{{build_hash}}/css/font-awesome.min.css"> {{range .moreStyles}}
+  <link rel="stylesheet" type="text/css" href="{{.}}"> {{end}} {{if .readMode}}
+  <style>
+    aside {
+      transition: all 1s;
+      width: 0px!important;
+    }
+
+    main {
+      width: 100%!important;
+    }
+  </style>
+  {{end}}
+<style>
+.vk_groups {
+  margin-left: 5px;
+}
+</style>
+  <script>
+    var smolgu_lib = {
+      build_hash: {{build_hash}}
+    }
+
+    function slogan() {
+      var r = Math.floor((Math.random() * 7));
+      var titles = ["РАСШИРЬ СВОИ ГОРИЗОНТЫ", "ОБГОНИ ДРУЗЕЙ В УЧЁБЕ", "ПОПОЛНИ ЗАПАС ЗНАНИЙ", "ПОЛУЧИ ДИПЛОМ С ОТЛИЧИЕМ", "СУМЕЙ СТАТЬ ЛУЧШЕ", "УСВОЙ ОПЫТ ЧЕЛОВЕЧЕСТВА", "Открой окно в мир"];
+      return titles[r]
+    }
+  </script>
+</head>
+
+<body>
+  {{ if .IsMobile}}
+  <div style="padding:15px;text-align:center;background:rgba(255,255,255,.5);color:red;">
+    <a href="/switch-to-mobile?next={{.CurrentUrl}}">Перейти на мобильную версию</a>
+  </div>{{ end }}
+  <!--<div style="padding:5px;
+text-align:center;
+background:rgba(255,255,255,.5);
+color:red;
+font-size:85%;">
+          <b>Сайт на реконструкции. Не все материалы доступны.</b>
+</div>-->
+
+  <div class="nav-top">
+    <div class="container">
+      <ul>{{range (.Menus.Menu "top").Items.FirstLevel }}
+        <li><a href="{{.Link}}">{{$.i18n.Tr .Title}}{{end}}</a></li>
+      </ul>
+      <!-- <ul>
+          <li><a href="/pages/istoriya-biblioteki/">История библиотеки</a>
+                <li><a href="/pages/sovremennoe-sostoyanie/"> Состояние</a> -->
+      <!--<li><a href="/missionLib/">МИССИЯ БИБЛИОТЕКИ СмолГУ</a>-->
+      <!-- <li><a href="/pages/structura/">ОБЩАЯ ТАБЛИЦА</a>
+                <li><a href="/pages/rabotniki/">ПОДРАЗДЕЛЕНИЯ</a> -->
+      <!-- <li><a href="/pages/pravila-polzovaniya-bibliotekoi/">ПРАВИЛА Библиотеки</a>
+                <li><a href="/pages/platnie-uslugi/">ПЛАТНЫЕ УСЛУГИ</a>
+                <li><a href="/pages/kontakti/">КОНТАКТЫ</a> -->
+      <!--<li><a href="/fotoSourse/">ФОТОГАЛЕРЕЯ</a>-->
+      <!-- <li><a href="/pages/photos/">ФОТОГАЛЕРЕЯ</a>
+        </ul> -->
+    </div>
+  </div>
+  <div class="container">
+    <div class="header-gradient">
+      <header>
+        <div class="header-legend">
+          <div class=hero>Библиотека</div>
+          <div class="header-white" id="slogan-node">
+            <noscript>Открой окно в мир</noscript>
+          </div>
+          <script>
+            document.getElementById("slogan-node").innerText = slogan()
+          </script>
+        </div>
+        <div class="header-window hidden-mobile" id="header-window" style="opacity:0;">
+          <div class="header-window-inner"></div>
+        </div>
+      </header>
+    </div>
+    <div class="book-nav-bg">
+      <input type="checkbox" class="menu-checkbox" id="menu">
+      <label class="toggle-menu" for="menu" onclick></label>
+      <nav role="off-canvas">
+        <ul>{{range (.Menus.Menu "main").Items.FirstLevel }}
+          <a href="{{.Link}}">
+            <li>{{$.i18n.Tr .Title}}</li>{{end}}</a>
+        </ul>
+      </nav>
+    </div>
+    <section>
+      <aside class="aside-left">
+        <ul class="nav-left">
+          <li>
+            <span>О библиотеке:</span>
+            <ul>{{range (.Menus.Menu "about").Items.FirstLevel }}
+              <li><a href="{{.Link}}">{{$.i18n.Tr .Title}}</a></li>{{end}}
+            </ul>
+          </li>
+          <!-- <li>
+              <span>Структура библиотеки:</span>
+              <ul>
+                <li><a href="/pages/structura/">ОБЩАЯ ТАБЛИЦА</a>
+                <li><a href="/pages/rabotniki/">ПОДРАЗДЕЛЕНИЯ</a>
+              </ul>
+            </li> -->
+          <li>
+            <span>Читателям:</span>
+            <ul>{{range (.Menus.Menu "readers").Items.FirstLevel }}
+              <li><a href="{{.Link}}">{{$.i18n.Tr .Title}}</a></li>{{end}}
+            </ul>
+          </li>
+          <!-- <li>
+              <span>Кураторский час:</span>
+              <ul>
+
+                <li><a href="/unknown/">ПЛАН ВОСПИТАТЕЛЬНОЙ РАБОТЫ</a>
+                <li><a href="/newEvents/">ЗАЯВКИ НА ПРОВЕДЕНИЕ МЕРОПРИЯТИЙ</a>
+              </ul>
+            </li> -->
+          <!--<li>
+              <span>Персоналии учёных:</span>
+              <ul>
+                <li><a href="/unknown/">СВОДНЫЕ БИБЛИОГРАФИЧЕСКИЕ ПОСОБИЯ</a>
+                <li><a href="/unknown/">ПЕРСОНАЛЬНЫЕ БИБЛИОГРАФИЧЕСКИЕ ПОСОБИЯ</a>
+                <li><a href="/unknown/">ВИРТУАЛЬНЫЕ ВЫСТАВКИ</a>
+              </ul>
+            </li>-->
+          <!-- <li>
+              <span>Каталоги библиотек:</span>
+              <ul>
+                <li><a href="/pages/elektronnii-katalog/">КАТАЛОГ БИБЛИОТЕКИ СМОЛГУ</a>
+                <li><a href="http://smolensklib.ru/scripts/zgate.exe?Init+test.xml,simple.xsl+rus" target="_blank">КАТАЛОГ СОУБ</a>
+                <li><a href="http://library.shu.ru/"  target="_blank"  >КАТАЛОГ БИБЛИОТЕКИ СГУ</a>
+                <li><a href="http://sigla.ru/"  target="_blank"  >ЕДИНАЯ ТОЧКА ДОСТУПА к ЭК РФ</a>
+              </ul>
+            </li> -->
+          <!--<li>
+              <span>Книгообмен:</span>
+              <ul>
+                <li><a href="/unknown/">ОБМЕННЫЙ ФОНД</a>
+                <li><a href="/unknown/">BOOKCROSSING</a>
+              </ul>
+            </li>-->
+          <!-- <li>
+              <span>Пополнение фонда:</span>
+              <ul>
+                <li><a href="/pages/statistika/">СТАТИСТИКА</a>
+                <li><a href="/pages/dariteli/">НАШИ ДАРИТЕЛИ</a>
+              </ul>
+            </li> -->
+          <li>
+            <span>Виртуальные выставки и обзоры:</span>
+            <ul>
+              <li><a href="/pages/knigi-po-istorii-rossii/">ВЫСТАВКИ НОВЫХ ПОСТУПЛЕНИЙ</a></li>
+                <li><a href="/pages/tematicheskie-vistavki/">ТЕМАТИЧЕСКИЕ ВЫСТАВКИ</a>
+                  <li><a href="/pages/ivonin-yrii-sergeevich/">ВЫСТАВКИ К ЮБИЛЕЯМ УЧЁНЫХ СМОЛГУ</a>
+                    <!--<li><a href="/pages/hudozhniki/">Художники детской книги</a>-->
+                    <!--<li><a href="/presSourse/">ВЫСТАВКИ К ЗНАМЕНАТЕЛЬНЫМ И ПАМЯТНЫМ ДАТАМ</a>-->
+                    <li><a href="/news/296">ВЫСТАВКИ К ЗНАМЕНАТЕЛЬНЫМ И ПАМЯТНЫМ ДАТАМ</a>
+                      <li><a href="/pages/tematicheskie-obzory/">ТЕМАТИЧЕСКИЕ ОБЗОРЫ</a>
+                        <li><a href="/pages/prezentaciya-knigi/">ПРЕЗЕНТАЦИЯ КНИГИ</a>
+                          <li><a href="/pages/calendar/">ЛИТЕРАТУРНЫЙ КАЛЕНДАРЬ</a>
+                            <li><a href="/pages/lectorii/">ЛЕКТОРИЙ</a>
+                              <li><a href="/pages/hudozhniki/">Художники детской книги</a>
+            </ul>
+            </li>
+            <!-- <li>
+              <span>Читателям:</span>
+              <ul>
+                <li><a href="/pages/memosourse/">ПАМЯТКА ПЕРВОКУРСНИКАМ</a>
+              </ul>
+            </li> -->
+            <li>
+              <span>Библиотекарям:</span>
+              <ul>{{range (.Menus.Menu "librarian").Items.FirstLevel }}
+                <li><a href="{{.Link}}">{{$.i18n.Tr .Title}}</a></li>{{end}}
+              </ul>
+            </li>
+            <!-- <li>
+              <span>Год литературы:</span>
+              <ul>
+
+              </ul>
+            </li> -->
+            <!-- <li>
+              <span>Архив новостей:</span>
+              <ul>
+                <li><a href="/pages/archive/">Архив</a>
+              </ul>
+            </li> -->
+            <li>
+
+            </li>
+
+        </ul>
+        {{range (.Menus.Menu "links").Items.FirstLevel }}
+        <a style="margin: 0 0 0 10px; display: block;" href="{{.Link}}">{{$.i18n.Tr .Title}}</a><br>{{end}}
+
+<b style="margin: 0 0 0 10px; display: block;">Мы ВКонтакте:</b>
+
+<!-- VK Widget -->
+<div id="vk_groups" class="vk_groups"></div>
+{{if .IsSigned}} {{if .IsAdmin}}
+<a href="/vktrack">Статистика группы</a>
+{{end}}{{end}}
+      </aside>
+      <main>
+        <div class="content">
+          <form class="search-form" action="/search" method="GET">
+            <input type="search" class="search-input" name="q" value="{{.SearchQuery}}" placeholder="Поиск...">
+            <button type="submit" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </form>
+          {{ if .Flash.ErrorMsg}}
+            <p><b>{{.Flash.ErrorMsg}}</b></p>
+          {{ end }}
+          {{ if .Flash.SuccessMsg}}
+            <p><b>{{.Flash.SuccessMsg}}</b></p>
+          {{ end }}
+          {{yield}}
+        </div>
+      </main>
+      <aside class="aside-right">
+        <div class="account">
+          <ul class="nav-right">
+            {{if .IsSigned}} {{if .IsAdmin}}
+            <li><a href="/new">Создать страницу</a></li>
+            <li><a href="/users">Пользователи</a></li>
+            <li><a href="/admin/banners">Баннеры</a></li>
+            {{end}}
+            <li><a href="/account/dashboard">Личный кабинет</a></li>
+            <li><a href="/account/logout">Выйти</a></li>
+            {{else}}
+            <form action="/account/auth" method="post">
+              <div class="form-group">
+                <input class="form-control bib-input" type="email" name="email" id="email" placeholder="Ваш e-mail">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" name="password" id="password" placeholder="Ваш пароль">
+              </div>
+              <button class="btn w100"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</button><!-- или <a href="/account/reg">Зарегистрироваться</a>-->
+            </form>
+            <li></li>{{end}}
+          </ul>
+        </div>
+
+        <ul class="nav-right">
+          <li><a href="/pages/regim-raboti/">Режим работы</a></li>
+          <!--<li><a href="/pages/obnovleniya/">Новое на сайте</a></li>-->
+        </ul>
+        <div>
+          {{template "log" .}}
+        </div>
+        <!--<img src="/static/img/aside-right-girl.png" alt="">-->
+        <ul class="banners">
+          {{range .banners}}
+          <li class="border-{{.Color}}">
+            <a target="_blank" href="{{.Url}}"><img src="{{.ImgPath}}" alt=""></a>
+          </li>
+          {{end}}
+          <!--<li class="border-blue"><a target="_blank" href="http://www.polpred.com/"><img src="/static/img/banners/polpred.png" alt=""></a></li>
+            <li class="border-green"><a target="_blank" href="http://e.lanbook.com/"><img src="/static/img/banners/lan.jpg" alt=""></a></li>-->
+          <!--<li class="border-red"><a target="_blank" href="http://biblioclub.ru/"><img src="/static/img/banners/ub.jpg" alt=""></a></li>-->
+          <!--<li class="border-sea"><a target="_blank" href="http://rucont.ru/"><img src="/static/img/banners/rucont.jpg" alt=""></a></li>
+            <li class="border-dark-green"><a target="_blank" href="http://www.iprbookshop.ru/elibrary/"><img src="/static/img/banners/sprbooks.jpg" alt=""></a></li>
+            <li class="border-sea"><a target="_blank" href="http://www.proquest.com/"><img src="/static/img/banners/logoquest.jpg" alt=""></a></li>-->
+        </ul>
+      </aside>
+    </section>
+  </div>
+  <div class="container">
+    <footer>
+      <div class="c3">
+        <h2>Библиотека СмолГУ</h2>
+        <p>
+          Все материалы сайта доступны по лицензии:</p>
+        <p><a href="http://creativecommons.org/licenses/by/4.0/deed.ru" hreflang="ru" class="underline" rel="license" target="_blank">Creative Commons Attribution 4.0 International</a>
+        </p>
+      </div>
+      <div class="c3"></div>
+      <div class="c3">
+
+      </div>
+      <div class="c3"></div>
+      <div id="li-counter">
+
+      </div>
+    </footer>
+  </div>
+  <script>
+
+  function isFunction(functionToCheck) {
+ var getType = {};
+ return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+}
+    /*loadJs*/ ! function(w) {
+      w.loadJs = function(t, a, cb) {
+        var d = w.document,
+          s = d.createElement("script"),
+          r = false;
+        s.async = a;
+        s.src = t;
+        s.onload = s.onreadystatechange = function() {
+        if ( !r && (!this.readyState || this.readyState == 'complete') )
+        {
+          r = true;
+          if (isFunction(cb)) {
+          cb();
+          }
+
+        }
+        };
+        d.head.appendChild(s)
+      }
+    }(window);
+
+    window.addEventListener("load", function() {
+      setTimeout(function() {
+        loadJs("/{{build_hash}}/js/main.min.js", false) {{range.moreScripts}}
+        loadJs("/{{build_hash}}/js/{{.}}", false) {{end}}
+        loadJs("//vk.com/js/api/openapi.js?146", false, function() {
+          console.log("cnb")
+          VK.Widgets.Group("vk_groups", {mode: 3, color1: 'E8ECB2', color2: '388A9E', color3: 'FFA955'}, 144624460);
+        })
+      }, 200)
+    })
+  </script>
+  <a href="#0" class="cd-top">Top</a>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-97711597-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{{if  .IsSigned}}
+{{if .IsAdmin}}
+<a href="/vkr/add">Загрузить</a>
+{{end}}
+{{end}}
+<ul>
+{{range .facs}}
+<li><a href="/vkr/{{.Id}}">{{.Title}}</a></li>
+{{end}}
+</ul>

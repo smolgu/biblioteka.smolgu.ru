@@ -1,0 +1,36 @@
+{{.Error}}
+<form action="" method="post">
+	<div class="form-group">
+		<label for="last_name">Введите Фамилию</label>
+		<input class="form-control" type="last_name" name="last_name" id="last_name" placeholder="фамилия">
+	</div>
+	<div class="form-group">
+		<label for="first_name">Введите Имя</label>
+		<input class="form-control" type="text" name="first_name" id="first_name" placeholder="имя">
+	</div>
+	<div class="form-group">
+		<label for="patronymic">Введите Отчество</label>
+		<input class="form-control" type="text" name="patronymic" id="patronymic" placeholder="отчество">
+	</div>
+	<div class="form-group">
+		<label for="email">Введите ваш e-mail</label>
+		<input class="form-control" type="email" name="email" id="email" placeholder="email">
+	</div>
+	<div class="form-group">
+		<label for="password">Придумайте пароль</label>
+		<input class="form-control" type="password" name="password" id="password" placeholder="пароль">
+	</div>
+	<div class="form-group">
+		<label for="password_repeat">Повторите пароль</label>
+		<input class="form-control" type="password" name="password_repeat" id="password_repeat" placeholder="пароль">
+	</div>
+	<div class="form-group">
+		<label for="fac">Факультет</label>
+		<select name="fac" id="fac">{{range .Faculties}}
+			<option value="{{.Id}}">{{.Title}}</option>{{end}}
+		</select>
+	</div>
+	<div class="form-group">
+		<button>Регистрация</button>
+	</div>
+</form>

@@ -1,0 +1,236 @@
+BODY {
+/*  font-family: sans-serif; */
+  font-family: arial;
+  color: black;
+  background: #ffffe6;
+}
+
+SPAN.help {
+  font-weight: bold;
+  text-align: right;
+}
+
+PRE {
+  font-family: monospace;
+}
+
+TD.data {
+  font-family: monospace;
+}
+
+TD.occur {
+  font-family: monospace;
+  text-align:right;
+  padding-right: 1em;
+}
+
+TD.terminfo {
+  font-family: monospace;
+}
+
+TD.buttons {
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+TD.label {
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+TD.recsrc {
+  font-size: 70%;
+}
+
+SPAN.fieldlabel, SPAN.subfieldlabel {
+  font-family: monospace;
+  color: blue;
+}
+
+SPAN.data, SPAN.indicator {
+  font-family: monospace;
+}
+
+SPAN.label {
+  font-family: monospace;
+}
+
+DIV.diag {
+  font-size: 90%;
+  color: #550000;
+}
+
+SPAN.warn {
+  color: #804066;
+}
+
+DIV.succ {
+  font-weight: bold;
+  font-size: 120%;
+}
+
+DIV.fail {
+  color: #804066;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+DIV.subjects {
+  margin-top: 1em;
+}
+
+SPAN.succ {
+  font-style: italic;
+}
+
+P.note {
+  text-align: justify;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  font-size: 80%;
+}
+
+P.ind {
+  text-indent: 2em;
+}
+
+P.terms {
+  background: #ffffff;
+}
+
+DIV.ind {
+  margin-left: 1.5em;
+}
+
+DIV.menubar {
+  background: #ffffff;
+}
+
+DIV.recordmenu {
+  font-size: 80%;
+}
+
+DIV.msg {
+  text-align: center;
+  border: solid #804066;
+  border-width: thin;
+  font-size: 80%;
+  padding: .5em;
+}
+
+DIV.cimi {
+  margin-top: .5em;
+  border: solid #804066;
+  border-width: thin;
+  padding: .5em;
+}
+
+
+A:link {
+  color: #0000ff;
+}
+
+A:visited {
+  color: #804066;
+}
+
+H1 {
+  text-align: center;
+  font-size: 130%;
+}
+
+H2 {
+  color: #804066;
+  text-align: center;
+  font-size: 120%;
+}
+
+H3 {
+  color: #804066;
+  text-align: center;
+  font-size: 110%;
+}
+
+H4 {
+  color: #804066;
+  text-align: center;
+  font-size: 90%;
+}
+
+H5 {
+  color: #804066;
+  text-align: center;
+  font-size: 80%;
+}
+
+TABLE.footer {
+  border: none;
+  border-spacing: 0;
+  border-width: 0;
+  width: 100%;
+  padding: 0;
+}
+
+TD.f1 {
+  border: none;
+  border-spacing: 0;
+  border-width: 0;
+}
+
+TD.f2 {
+  border: none;
+  border-spacing: 0;
+  border-width: 0;
+  margin: 0;
+  color: #ffffe6;
+  background: #804066;
+  font-size: 11pt;
+  text-align: right;
+  height: 18px;
+}
+
+A.footer {
+  font-size: smaller;
+  font-weight: bold;
+  color: #ffffe6;
+  background: #804066;
+}
+
+TABLE.location {
+  border: solid black;
+  border-width: thin;
+  border-collapse: collapse;
+}
+ 
+TD.location, TH.location {
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: solid black;
+  border-width: thin;
+  border-collapse: collapse;
+}
+
+INPUT.report {
+  border: none;
+  background: #ffffe6;
+  font-family: arial;
+}
+
+A.warn {
+  color: blue;
+  text-decoration: none;
+}
+
+.top {
+  display:table;
+  vertical-align: middle;
+}
+.top img {
+  display: table-cell;
+}
+.top h2 {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 20px;
+}

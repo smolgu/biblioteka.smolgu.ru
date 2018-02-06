@@ -1,0 +1,7 @@
+{{ if .uploaded}}Файл загружен, ссылка <input type="text" value="http://biblioteka.smolgu.ru/files/upload/blob/{{.uploaded}}"> {{end}}
+
+<form action="/files/upload/new" method="post" enctype="multipart/form-data">
+	<input type="text" name="title" id="" placeholder="название">
+	<input type="file" name="file" id="">
+	<button class="btn">Загрузить</button>
+</form>

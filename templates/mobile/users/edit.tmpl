@@ -1,0 +1,54 @@
+
+<form action="" method="post">
+<div>Cтатус: <b>{{.user.Status}}</b>
+<br>
+<select name="user_status">
+<option value="0">Гость</option>
+{{range $k,$v := .statuses}}
+<option value="{{printf "%d" $k}}" {{if eq $.user.Status $k}}selected{{end}}>{{$v}}</option>
+{{end}}
+</select>
+</div>
+	<h2>Имя</h2>
+	<div class="form-group">
+		<label for="last_name">Введите Фамилию</label>
+		<input class="form-control" type="last_name" name="last_name" id="last_name" placeholder="фамилия" value="{{.user.LastName}}">
+	</div>
+	<div class="form-group">
+		<label for="first_name">Введите Имя</label>
+		<input class="form-control" type="text" name="first_name" id="first_name" placeholder="имя" value="{{.user.FirstName}}">
+	</div>
+	<div class="form-group">
+		<label for="patronymic">Введите Отчество</label>
+		<input class="form-control" type="text" name="patronymic" id="patronymic" placeholder="отчество" value="{{.user.Patronymic}}">
+	</div>
+	<h2>Контакты</h2>
+	<div class="form-group">
+		<label for="email">Введите ваш e-mail</label>
+		<input class="form-control" type="email" value="{{.user.Email}}" name="email" id="email" placeholder="email">
+	</div>
+	<h2>Учебная информация</h2>
+	<div class="form-group">
+		<label for="fac">Факультет</label>
+		<input class="form-control" autocomplete="off" type="fac" name="fac" id="fac" placeholder="факультет" value="{{.user.Data.Faculty}}">
+	</div>
+	<div class="form-group">
+		<label for="train">Направление подготовки</label>
+		<input class="form-control" autocomplete="off" type="train" name="train" id="train" placeholder="факультет" value="{{.user.Data.TrainingDirection}}">
+	</div>
+	<div class="form-group">
+		<button>Сохранить</button>
+	</div>	
+	<h2>Изменить пароль</h2>
+	<div class="form-group">
+		<label for="password">Придумайте пароль</label>
+		<input class="form-control" type="password" name="password" id="password" placeholder="пароль">
+	</div>
+	<div class="form-group">
+		<label for="password_repeat">Повторите пароль</label>
+		<input class="form-control" type="password_repeat" name="password_repeat" id="password_repeat" placeholder="пароль">
+	</div>
+	<div class="form-group">
+		<button>Сохранить</button>
+	</div>	
+</form>

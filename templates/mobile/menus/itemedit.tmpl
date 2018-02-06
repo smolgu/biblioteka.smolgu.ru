@@ -1,0 +1,19 @@
+<div><a href="/menus/edit?id={{ .menuitem.MenuId }}">В меню</a></div>
+
+
+<form method="post">
+<input type="text" name="title" placeholder="title" value="{{ .menuitem.Title }}">
+<input type="text" name="link" placeholder="link" value="{{ .menuitem.Link }}">
+	<button>Sabmit</button>
+</form>
+
+<div>
+<h3>Добавить подпункт</h3>
+<form method="post" action="/menus/itemcreate">
+<input type="text" name="title" placeholder="title" value="{{ .menuitem.Title }}">
+<input type="text" name="link" placeholder="link" value="{{ .menuitem.Link }}">
+<input type="hidden" name="parent" value="{{ .menuitem.Id }}">
+<input type="hidden" name="id" value="{{ .menuitem.MenuId }}">
+<button>Sabmit</button>
+</form>
+</div>

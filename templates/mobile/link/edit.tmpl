@@ -1,0 +1,7 @@
+<form action="" method="post">
+	<input type="text" name="title" placeholder="title" value="{{.link.Title}}">
+	<input type="text" name="url" placeholder="url" value="{{.link.URL}}">
+	<input type="text" name="link_tags" placeholder="link tags" value="{{str_join .link.Tags ", "}}">
+	<button>Save</button>
+	<a href="../delete/{{.link.Id}}">Удалить</a>
+</form>

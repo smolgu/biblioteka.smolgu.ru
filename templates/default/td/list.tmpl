@@ -1,0 +1,15 @@
+{{if  .IsSigned}}
+{{if .IsAdmin}}<a href="/td/add">Создать</a>
+{{end}}{{end}}
+<ul>
+{{range .dirs}}
+<li> <a href="/vkr/{{.FacultyId}}/{{.Id}}">{{.Title}}</a> 
+
+{{if  $.IsSigned}}
+{{if $.IsAdmin}} <a href="/td/{{.FacultyId}}/{{.Id}}/delete">Удалить</a>
+{{end}}
+{{end}}
+</li>
+
+{{end}}
+</ul>

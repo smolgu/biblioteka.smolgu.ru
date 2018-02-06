@@ -1,0 +1,14 @@
+<p>Ваш файл загружен и доступен по ссылке <a href="/files/upload/blob/{{.blob}}">http://biblioteka.smolgu.ru/files/upload/blob/{{.blob}}</a></p>
+
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+
+
+<!-- Target -->
+<input id="foo" value="http://biblioteka.smolgu.ru/files/upload/blob/{{.blob}}">
+
+<!-- Trigger -->
+<button class="btn" data-clipboard-target="#foo">
+    Скопировать
+</button>
+
+<script>new Clipboard('.btn');</script>

@@ -1,0 +1,24 @@
+<div class="padding-10">
+<h1>{{.page.Title}}</h1>
+
+{{if $.IsAdmin}}
+<!-- <form action="/news/{{.Id}}/delete" method="post">
+	<button>Удалить</button>
+</form> -->
+<a href="/news/{{.page.Id}}/edit">Изменить</a>
+{{end}}
+
+{{raw (markdown .page.Body)}}
+
+{{if .page.Image}}
+<p>
+<a href="{{imgUrl .page.Image}}" class="fancybox" rel="fancybox">
+	<img width="100%" data-original="{{imgUrl .page.Image}}" class="lazy" alt="">
+</a>
+{{range .page.Images}}
+<a href="{{imgUrl . }}" class="fancybox" rel="fancybox">
+	<img height="100px" data-original="{{imgUrl . "true"}}" class="lazy" alt="">
+</a>
+{{end}}
+{{end}}
+</div>

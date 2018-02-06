@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="UTF-8">
+	<title>{{ .Title }}</title>
+	<style>
+		body {
+			max-width: 800px;
+			margin: 0 auto;
+			font-size: 2vmax;
+		}
+		.topnav {
+		  overflow: hidden;
+		  background-color: #333;
+		  list-style: none;
+		}
+
+		.topnav a {
+		  float: left;
+		  display: block;
+		  color: #f2f2f2;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		  font-size: 17px;
+		}
+	</style>
+</head>
+<body>
+<ul class="topnav">
+	{{range (.Menus.Menu "main").Items.FirstLevel }}
+        <li><a href="{{.Link}}">{{$.i18n.Tr .Title}}</a></li>{{end}}
+</ul>
+	{{yield}}
+
+<footer>
+<br>
+	<a href="/switch-to-full?next={{.CurrentUrl}}">Перейти на полную версию</a>
+</footer>
+</body>
+</html>

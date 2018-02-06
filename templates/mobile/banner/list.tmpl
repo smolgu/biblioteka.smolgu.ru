@@ -1,0 +1,7 @@
+<a href="/admin/banners/add">Добавить</a>
+<ul>
+{{range .banners}}
+<li><img src="{{.ImgPath}}" alt="">  {{.Title}} {{if .Enabled}} <a href="/admin/banners/{{.Id}}/hide">Скрыть</a> {{end}}</li>
+<hr>
+{{end}}
+</ul>

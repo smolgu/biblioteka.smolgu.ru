@@ -1,0 +1,14 @@
+db.sqlite
+sql.log
+conf/users.ini
+conf/app.ini
+lib
+lib.upx
+
+static/img/banners
+
+public/
+
+log/
+tmp/
+data/

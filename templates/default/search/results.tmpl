@@ -1,0 +1,10 @@
+<h1>{{.Title}}</h1>
+{{if .pages}}
+{{range .pages}}
+
+<a href="/{{.OldId}}"><h2> {{.Title}} </h2></a>
+
+{{end}}
+{{else}}
+<b>Ничего не найдено!</b> Попробуйте поискать в <a href="http://92.241.99.100//Scripts/zgate.exe?Init+test.xml,simple.xsl+rus">электронном каталоге библиотеки</a>.
+{{end}}

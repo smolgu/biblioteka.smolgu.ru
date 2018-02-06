@@ -1,0 +1,14 @@
+<ul>
+{{ range .list }}
+<li><a href="/menus/edit?id={{.Id}}">{{.Title}}</a></li>
+{{ end }}
+</ul>
+
+<div>
+<h3>Создать меню</h3>
+	<form method="post" action="/menus/create">
+		<input type="text" name="title" placeholder="title">
+		<input type="text" name="slug" placeholder="slug">
+		<button>Submit</button>
+	</form>
+</div>

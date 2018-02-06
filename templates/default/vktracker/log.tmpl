@@ -1,0 +1,18 @@
+{{range .recs}}
+{{$rec := . }}
+<h2>Отчёт {{ .Date.Format "02.01.2006 15:04" }}</h2>
+<h3>Новые пользователи:</h3>
+{{ with .Joined}}{{range .}}
+<a href="https://vk.com/id{{.}}"><img src="{{ $rec.Img . }}" alt="">
+  {{ $rec.Fname . }} {{ $rec.Lname . }}
+</a><br />
+{{end}}{{end}}
+
+<h3>Вышедшие пользователи:</h3>
+{{ with .Leaved }}{{range .}}
+<a href="https://vk.com/id{{.}}"><img src="{{ $rec.Img . }}" alt="">
+  {{ $rec.Fname . }} {{ $rec.Lname . }}
+</a><br />
+{{end}}{{end}}
+
+{{end}}

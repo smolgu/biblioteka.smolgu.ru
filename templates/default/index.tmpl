@@ -1,0 +1,36 @@
+{{if .Flash.InfoMsg}}{{raw .Flash.InfoMsg}}{{end}}
+<h3>Новости библиотеки:</h3>
+<div class="justify">
+  {{range .pages}}{{if $.IsAdmin}}
+  <form class="inline-block" action="/news/{{.Id}}/delete" method="post">
+	  <button>Удалить</button>
+  </form>
+  <form class="inline-block" action="/news/{{.Id}}/edit" method="get">
+	  <button>Изменить</button>
+  </form>
+  {{end}}
+  {{if .Title}}
+	<div style="clear:both" class="index-item">
+		<time style="font-size:90%;color:rgba(120,120,120,.8);">{{.Date.Format "02.01.2006"}}</time>
+		<a href="/news/{{.Id}}" style="display:block;clear:both">
+      <h3 style="margin:0;color:#f81;" class="text-left">{{.Title}}</h3>
+		</a>
+		<p>{{.Summary}}...<a class="btn btn-small rounded fr btn-self-transparent" href="/news/{{.Id}}">Читать дальше</a></p>
+    <small>Просмотров: {{.Views}}</small>
+  </div>
+  {{else}}
+  <div style="clear:both" class="index-item">
+    <time style="font-size:90%;color:rgba(120,120,120,.8);">{{.Date.Format "02.01.2006"}}</time>
+    <a href="{{imgUrl .Image}}" class="fancybox" style="display:block;clear:both">
+      <img style="display:block;margin:0 auto;max-width:100%;max-height:300px;"data-original="{{imgUrl .Image}}" class="lazy" alt="">
+    </a>
+  </div>
+  {{end}}
+  {{end}}
+</div>
+
+<div style="clear:both">
+	<div class="text-center">
+		<b><a href="/?p={{.nextPage}}">Читать дальше</a></b> | <a href="/pages/archive/">Архив новостей</a>
+	</div>
+</div>

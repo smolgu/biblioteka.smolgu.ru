@@ -1,0 +1,92 @@
+<form name="ZGATE" method="GET" action="">
+<table>
+<tr>
+<th>Материалы</th>
+<th>Базы данных</th>
+</tr>
+<tr>
+<td><select name="MATERIAL_TYPE" multiple size="4"><option selected value="">Все</option>
+<option value="m[1:1021]">Монографии</option>
+<option value="OR(a[1:1021]:b[1:1021])">Cтатьи, доклады</option>
+<option value="c[1:1021]">Подборки</option></select></td>
+<td><select name="DBNAME" multiple size="4"><option selected value="BOOK" class="">КНИГИ</option>
+<option selected value="REF" class="">АВТОРЕФЕРАТЫ</option>
+<option selected value="STAT" class="">СТАТЬИ</option>
+<option selected value="ЭЛЕКТР_РЕСУРСЫ" class="">ЭЛЕКТРОННЫЕ РЕСУРСЫ</option>
+<option selected value="ФРК" class="">ФРК</option>
+<option selected value="ЭБ" class="">Электронная библиотека СмолГУ</option>
+<option selected value="БЕЛ_СМОЛЯНЕ" class="">Белорусские смоляне</option>
+<option selected value="ПРЖЕВАЛЬСКИЙ" class="">Пржевальский</option></select></td>
+</tr>
+</table>
+<br><select name="USE_1"><option selected value="1003">Автор</option>
+<option value="4">Заглавие</option>
+<option value="5">Заглавие серии</option>
+<option value="12">Ключ в базе данных</option>
+<option value="21">Тематика</option>
+<option value="22">Предметная рубрика (Рубрика Rameau)</option>
+<option value="23">Ключевые слова (Рубрика BDI)</option>
+<option value="20">Локальная классификация</option>
+<option value="7">ISBN</option>
+<option value="53">Локальный шифр</option>
+<option value="9032">Фонд, отдел, коллекция</option>
+<option value="1018">Издательство</option>
+<option value="31">Год публикации</option>
+<option value="54">Язык (код)</option>
+<option value="63">Примечание</option>
+<option value="59">Место публикации</option>
+<option value="1035">Везде</option></select> <input name="TERM_1" size="25" maxlength="100" value="">
+<!--<br>
+<select name="BOOLEAN_OP1"><option selected value="AND">И</option>
+<option value="OR">ИЛИ</option>
+<option value="ANDNOT">И-НЕ</option></select><br><select name="USE_2"><option value="1003">Автор</option>
+<option selected value="4">Заглавие</option>
+<option value="5">Заглавие серии</option>
+<option value="21">Тематика</option>
+<option value="22">Предметная рубрика (Рубрика Rameau)</option>
+<option value="23">Ключевые слова (Рубрика BDI)</option>
+<option value="20">Локальная классификация</option>
+<option value="7">ISBN</option>
+<option value="53">Локальный шифр</option>
+<option value="9032">Фонд, отдел, коллекция</option>
+<option value="1018">Издательство</option>
+<option value="31">Год публикации</option>
+<option value="54">Язык (код)</option>
+<option value="63">Примечание</option>
+<option value="59">Место публикации</option>
+<option value="1035">Везде</option></select> <input name="TERM_2" size="25" maxlength="100" value=""><br><select name="BOOLEAN_OP2"><option selected value="AND">И</option>
+<option value="OR">ИЛИ</option>
+<option value="ANDNOT">И-НЕ</option></select><br><select name="USE_3"><option value="1003">Автор</option>
+<option value="4">Заглавие</option>
+<option value="5">Заглавие серии</option>
+<option selected value="21">Тематика</option>
+<option value="22">Предметная рубрика (Рубрика Rameau)</option>
+<option value="23">Ключевые слова (Рубрика BDI)</option>
+<option value="20">Локальная классификация</option>
+<option value="7">ISBN</option>
+<option value="53">Локальный шифр</option>
+<option value="9032">Фонд, отдел, коллекция</option>
+<option value="1018">Издательство</option>
+<option value="31">Год публикации</option>
+<option value="54">Язык (код)</option>
+<option value="63">Примечание</option>
+<option value="59">Место публикации</option>
+<option value="1035">Везде</option></select>
+<input name="TERM_3" size="25" maxlength="100" value="">-->
+<br><table><tr>
+<td class="buttons">
+<br><input name="SEARCH" type="submit" value="Поиск">
+</td>
+</tr></table>
+</form>
+<div style="margin-top:10px;"></div>
+{{range $k,$v := .records}}
+
+<div class="book">
+<a href="/katalog/book?id={{.SourceId}}">dfsdfsdf</a>
+{{if .Author}}{{.Author}}{{else}}{{index .Fields "200" "f"}}{{end}} - {{.Title}}<br>
+{{if not (is_last $k $.records)}}<hr>{{end}}
+{{.}}
+</div>
+
+{{end}}

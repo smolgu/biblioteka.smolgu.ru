@@ -1,0 +1,6 @@
+<h1>{{.Title}}</h1>
+<ul>
+{{range .links}}
+<li><a href="{{.URL}}" target="{{.Target}}">{{.Title}}</a>{{if $.IsAdmin}}(<a href="/links/edit/{{.Id}}">редактировать</a>){{end}}
+{{end}}
+</ul>

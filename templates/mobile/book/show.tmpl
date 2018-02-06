@@ -1,0 +1,32 @@
+<h2>{{.book.Title}}</h2>
+{{if .readMode}}<a href="/books/{{.book.Id}}?p={{.paginater.Current}}">Режим "Обычный"</a>{{else}}<a href="/books/{{.book.Id}}?p={{.paginater.Current}}&read=1">Режим "Для чтения"</a>{{end}}
+<img src="/books/page?id={{.book.Id}}&p={{.paginater.Current}}" alt="" width="100%">
+
+{{if not .paginater.IsFirst}}<a href="/books/{{.book.Id}}&read={{.readMode}}">Первая</a>{{end}}
+{{if .paginater.HasNext}}<a href="/books/{{.book.Id}}?p={{.paginater.Next}}&read={{.readMode}}">Дальше</a>{{end}}
+{{if not .paginater.IsLast}}<a class="text-left" href="/books/{{.book.Id}}?p={{.book.Pages}}&read={{.readMode}}">Последняя</a>{{end}}
+
+<script>
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        // up arrow
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+    }
+    else if (e.keyCode == '37') {
+       {{if .paginater.HasPrevious}}document.location.href = "/books/{{.book.Id}}?p={{.paginater.Previous}}&read={{.readMode}}"{{end}}
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+       {{if .paginater.HasNext}}document.location.href = "/books/{{.book.Id}}?p={{.paginater.Next}}&read={{.readMode}}"{{end}}
+       
+    }
+
+}
+</script>

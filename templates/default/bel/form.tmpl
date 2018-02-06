@@ -1,0 +1,27 @@
+<h1>Поиск в электронной библиотеке "Белорусские смоляне"</h1>
+
+
+<form action="/bel/base" method="get">
+	<div class="form-group">
+		<label for="">Автор</label>
+		<input class="form-control " type="text" name="author">
+	</div>
+<!-- 	<div class="form-group">
+	<label for="">Заглавие</label>
+	<input class="form-control" type="text" name="title">
+</div> -->
+	<div class="form-group">
+		<label for="">Ключевые слова</label>
+		<input class="form-control" type="text" name="keywords">
+	</div>
+	<div class="form-group">
+		<label for="">Город публикации</label>
+		<select name="place" id="" class="form-control">
+			<option value="" selected>Любой город</option>
+			<option>Смоленск</option>
+			<option>Минск</option>
+		</select>
+	</div>
+	<button style="margin-top: 10px" class="btn">Искать</button>
+	<!-- <a href="/sf" class="fl_r small" style="margin-bottom:30px">Расширенный поиск в электронном каталоге</a> -->
+</form>
