@@ -42,7 +42,7 @@ var CmdWeb = cli.Command{
 and it takes care of all the other things for you`,
 	Action: runWeb,
 	Flags: []cli.Flag{
-		intFlag("port, p", 3000, "Temporary port number to prevent conflict"),
+		//intFlag("port, p", 3000, "Temporary port number to prevent conflict"),
 		stringFlag("config, c", "conf/app.ini", "Configuration file path (default ./conf/app.ini)"),
 		stringFlag("mode, m", "dev", "Running mode"),
 		stringFlag("storage_dir", "./", "Dirrectory with data"),
@@ -231,7 +231,7 @@ func runWeb(ctx *cli.Context) {
 		return "ничего не найдено"
 	})
 
-	m.Run(ctx.Int("port"))
+	m.Run()
 }
 
 func expires() string {
