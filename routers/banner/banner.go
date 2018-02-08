@@ -1,20 +1,22 @@
 package banner
 
 import (
+	"image"
+	_ "image/gif"
+	_ "image/png"
+	"path/filepath"
+
 	"github.com/dchest/uniuri"
 	"github.com/disintegration/imaging"
 	"github.com/fatih/color"
 	"github.com/nfnt/resize"
 	"github.com/smolgu/lib/models"
 	"github.com/smolgu/lib/modules/middleware"
-	"image"
-	_ "image/gif"
-	_ "image/png"
-	"path/filepath"
+	"github.com/smolgu/lib/modules/setting"
 )
 
 var (
-	bannersPath = "./static/img/banners"
+	bannersPath = filepath.Join(setting.DataDir, "uploads/banners")
 	bannerWidth = 172
 )
 
@@ -79,10 +81,11 @@ func uploadBanner(c *middleware.Context) (string, error) {
 
 	rimg := resize.Resize(172, 0, img, resize.Bilinear)
 
-	name := filepath.Join(bannersPath, uniuri.New()+".jpg")
+	fname := uniuri.New() + ".jpg"
+	name := filepath.Join(bannersPath, fname)
 
 	e = imaging.Save(rimg, name)
-	return "/" + name, e
+	return "/uploads/banners/" + fname, e
 }
 
 func Img(c *middleware.Context) {
