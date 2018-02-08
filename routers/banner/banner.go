@@ -16,7 +16,6 @@ import (
 )
 
 var (
-	bannersPath = filepath.Join(setting.DataDir, "uploads/banners")
 	bannerWidth = 172
 )
 
@@ -82,7 +81,7 @@ func uploadBanner(c *middleware.Context) (string, error) {
 	rimg := resize.Resize(172, 0, img, resize.Bilinear)
 
 	fname := uniuri.New() + ".jpg"
-	name := filepath.Join(bannersPath, fname)
+	name := filepath.Join(setting.DataDir, "uploads/banners", fname)
 
 	e = imaging.Save(rimg, name)
 	return "/uploads/banners/" + fname, e
