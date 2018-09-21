@@ -16,7 +16,7 @@ func Create(c *middleware.Context) {
 			c.Error(500, e.Error())
 			return
 		}
-		c.Redirect("/buckets/" + fmt.Sprint(bucket.ID))
+		c.Redirect("/buckets/" + fmt.Sprint(bucket.Id))
 		return
 	}
 	c.HTML(200, "buckets/create")
