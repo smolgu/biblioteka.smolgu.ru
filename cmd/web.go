@@ -26,6 +26,7 @@ import (
 	"github.com/smolgu/lib/routers/auth"
 	"github.com/smolgu/lib/routers/banner"
 	"github.com/smolgu/lib/routers/book"
+	"github.com/smolgu/lib/routers/buckets"
 	"github.com/smolgu/lib/routers/link"
 	"github.com/smolgu/lib/routers/menus"
 	"github.com/smolgu/lib/routers/page"
@@ -208,6 +209,12 @@ func runWeb(ctx *cli.Context) {
 		m.Get("/blob/:id", albums.GetBlob)
 		m.Any("/create", albums.Create)
 	})
+
+	m.Group("/buckets", func() {
+		m.Any("/create", buckets.Create)
+		m.Get("/:id", albums.Get)
+		m.Post("/:id/upload", buckets.Upload)
+	}, auth.MustAdmin)
 
 	m.Post("/upload", routers.Upload)
 

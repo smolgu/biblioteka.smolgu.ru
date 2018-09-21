@@ -34,7 +34,9 @@ var (
 		new(Album),
 		new(Photo),
 		new(File),
-		new(Router)}
+		new(Router),
+		new(Bucket),
+	}
 )
 
 // Engine represents a xorm engine or session.

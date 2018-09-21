@@ -8,9 +8,11 @@ import (
 )
 
 type File struct {
-	Id     int64
-	Type   int
-	BlobID int64
+	Id       int64
+	Type     int
+	Title    string
+	BlobID   int64 `xorm:"blob_id"`
+	BucketID int64 `xorm:"bucket_id"`
 
 	OriginalFileName string
 	Mime             string
@@ -20,7 +22,21 @@ type File struct {
 	Deleted time.Time `xorm:"deleted"`
 }
 
-func Upload(fileName string, data []byte) (*File, error) {
+type FileCreateOptions struct {
+	BucketID int64
+	Title    string
+}
+
+func Upload(fileName string, data []byte, opts ...FileCreateOptions) (*File, error) {
+	var (
+		bucketID int64
+		title    string
+	)
+	if len(opts) > 0 {
+		bucketID = opts[0].BucketID
+		title = opts[0].Title
+	}
+
 	id, err := bloblog.Insert(data)
 	if err != nil {
 		return nil, err
@@ -31,6 +47,8 @@ func Upload(fileName string, data []byte) (*File, error) {
 		BlobID:           id,
 		OriginalFileName: fileName,
 		Mime:             getMime(fileName),
+		BucketID:         bucketID,
+		Title:            title,
 	}
 	_, err = x.Insert(f)
 	if err != nil {
@@ -43,6 +61,12 @@ func getMime(fName string) string {
 	switch filepath.Ext(fName) {
 	case ".pdf":
 		return "application/pdf"
+	case ".jpg":
+		return "image/jpeg"
+	case ".doc":
+		return "application/msword"
+	case ".docx":
+		return "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 	}
 	return "text/plain"
 }
