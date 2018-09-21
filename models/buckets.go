@@ -5,7 +5,7 @@ import (
 )
 
 type Bucket struct {
-	ID    int64
+	Id    int64
 	Title string
 
 	Files []*File `xorm:"-"`
