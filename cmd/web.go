@@ -212,7 +212,7 @@ func runWeb(ctx *cli.Context) {
 
 	m.Group("/buckets", func() {
 		m.Any("/create", buckets.Create)
-		m.Get("/:id", albums.Get)
+		m.Get("/:id", buckets.Get)
 		m.Post("/:id/upload", buckets.Upload)
 	}, auth.MustAdmin)
 
