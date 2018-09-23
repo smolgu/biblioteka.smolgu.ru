@@ -27,7 +27,7 @@ func Get(c *middleware.Context) {
 	id := c.ParamsInt64(":id")
 	bucket, e := models.BucketGet(id)
 	if e != nil {
-		log.Printf("err get bucket by id bucket=%d", id)
+		log.Printf("err get bucket by id bucket=%d err=%s", id, e)
 		c.Error(500, e.Error())
 		return
 	}
