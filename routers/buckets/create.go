@@ -2,6 +2,7 @@ package buckets
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/smolgu/lib/models"
 	"github.com/smolgu/lib/modules/middleware"
@@ -23,8 +24,10 @@ func Create(c *middleware.Context) {
 }
 
 func Get(c *middleware.Context) {
-	bucket, e := models.BucketGet(c.ParamsInt64(":id"))
+	id := c.ParamsInt64(":id")
+	bucket, e := models.BucketGet(id)
 	if e != nil {
+		log.Printf("err get bucket by id bucket=%d", id)
 		c.Error(500, e.Error())
 		return
 	}

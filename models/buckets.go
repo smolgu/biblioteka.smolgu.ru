@@ -2,6 +2,8 @@ package models
 
 import (
 	"time"
+
+	"github.com/pkg/errors"
 )
 
 type Bucket struct {
@@ -31,11 +33,11 @@ func BucketGet(id int64) (*Bucket, error) {
 	)
 	_, e = x.Id(id).Get(buck)
 	if e != nil {
-		return nil, e
+		return nil, errors.Wrap(e, "get bucket by id")
 	}
 	e = x.Where("bucket_id = ?", id).Find(&files)
 	if e != nil {
-		return nil, e
+		return nil, errors.Wrap(e, "err get bucket files")
 	}
 	buck.Files = files
 	return buck, e
