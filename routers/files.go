@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"path/filepath"
+	"strconv"
+	"strings"
 
 	"github.com/fatih/color"
 	"github.com/smolgu/lib/models"
@@ -53,12 +56,15 @@ func UploadFile(c *middleware.Context) {
 }
 
 func Blob(c *middleware.Context) {
-	id := c.ParamsInt64(":id")
-	bts, err := bloblog.Get(id)
+	idStr := c.Params(":id")
+	arr := strings.Split(idStr, ".")
+	id, _ := strconv.Atoi(arr[0])
+	bts, err := bloblog.Get(int64(id))
 	if err != nil {
 		c.Error(500, err.Error())
 		return
 	}
+	filepath.Ext(c.Params(":slug"))
 	ct := http.DetectContentType(bts[:1024])
 	c.Resp.Header().Set("Content-Type", ct)
 	c.Resp.WriteHeader(200)

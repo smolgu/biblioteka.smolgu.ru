@@ -6,12 +6,12 @@
   <td>
    <img src="/imgSourse/iconW.jpg" alt="" width="30"></td>
   <td>{{ .Title }}</td>
-  <td><a href="/files/upload/blob/{{ .BlobID }}">Скачать</a></td>
+  <td><a href="/files/{{ .Id }}/{{ .OriginalFileName }}">Скачать</a></td>
  </tr>
 {{end}}
 </table>
 {{if  .IsSigned}}
 {{if .IsAdmin}}
 <link rel="stylesheet" type="text/css" href="/{{build_hash}}/css/dropzone.min.css">
-<form action="/buckets/{{.bucket.ID}}/upload" class="dropzone" id="dropzone" enctype="multipart/form-data"></form>
+<form action="/buckets/{{.bucket.Id}}/upload" class="dropzone" id="dropzone" enctype="multipart/form-data"></form>
 {{end}}{{end}}

@@ -3,3 +3,5 @@ sql.log
 conf/users.ini
 conf/app.ini
 lib
+data
+log

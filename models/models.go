@@ -4,15 +4,12 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"path/filepath"
 	"reflect"
 
 	"github.com/go-xorm/xorm"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/pkg/errors"
-	"github.com/pquerna/ffjson/ffjson"
 	"github.com/smolgu/lib/modules/setting"
-	"github.com/ungerik/go-dry"
 )
 
 var (
@@ -70,16 +67,21 @@ func NewEngine() {
 	//x.SetLogger(logger)
 	x.ShowSQL(true)
 
+	err = Migrate()
+	if err != nil {
+		log.Fatalf("migrate err=%s", err)
+	}
+
 	x.Sync2(tables...)
 
-	bts, err := dry.FileGetBytes(filepath.Join(setting.DataDir, "conf/trains.json"))
-	if err != nil {
-		log.Fatalf("open trains json: %s", err)
-	}
-	err = ffjson.Unmarshal(bts, &Trains)
-	if err != nil {
-		log.Fatalf("unmarshal trains json: %s", err)
-	}
+	// bts, err := dry.FileGetBytes(filepath.Join(setting.DataDir, "conf/trains.json"))
+	// if err != nil {
+	// 	log.Fatalf("open trains json: %s", err)
+	// }
+	// err = ffjson.Unmarshal(bts, &Trains)
+	// if err != nil {
+	// 	log.Fatalf("unmarshal trains json: %s", err)
+	// }
 
 	var c Category
 	_, err = x.Where("name = 'Новости'").Get(&c)

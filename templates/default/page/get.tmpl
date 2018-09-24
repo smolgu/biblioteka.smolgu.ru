@@ -10,6 +10,19 @@
 
 {{raw (markdown .page.Body)}}
 
+{{ with .bucket }}
+<table class="table-bordered" width="100%">
+{{range .Files}}
+<tr align="center">
+  <td>
+   <img src="/imgSourse/iconW.jpg" alt="" width="30"></td>
+  <td>{{ .Title }}</td>
+  <td><a href="/files/{{ .Id }}/{{ .OriginalFileName }}">Скачать</a></td>
+ </tr>
+{{end}}
+</table>
+{{ end }}
+
 {{if .page.Image}}
 <p>
 <a href="{{imgUrl .page.Image}}" class="fancybox" rel="fancybox">

@@ -27,6 +27,7 @@ import (
 	"github.com/smolgu/lib/routers/banner"
 	"github.com/smolgu/lib/routers/book"
 	"github.com/smolgu/lib/routers/buckets"
+	"github.com/smolgu/lib/routers/files"
 	"github.com/smolgu/lib/routers/link"
 	"github.com/smolgu/lib/routers/menus"
 	"github.com/smolgu/lib/routers/page"
@@ -229,6 +230,7 @@ func runWeb(ctx *cli.Context) {
 
 	m.Any("/files/upload/new", routers.UploadFile)
 	m.Get("/files/upload/blob/:id", routers.Blob)
+	m.Get("/files/:id/:slug", files.Serve)
 
 	m.Get("/vktrack", routers.VkTrackerLog)
 

@@ -16,6 +16,8 @@ type Page struct {
 	Body     string `xorm:"TEXT"`
 	Category int64
 
+	BucketID int64 `xorm:"bucket_id"`
+
 	Slug string
 
 	Image  string

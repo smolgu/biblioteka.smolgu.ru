@@ -1,6 +1,6 @@
 [run]
 init_cmds = [
-	["go", "install"],
+	["go", "install", "./..."],
 	["go", "build"],
 	["./lib","web"]
 ]									# Commands run in start
@@ -18,7 +18,7 @@ ignore_files = []					# Regexps for ignoring specific notifies
 build_delay = 1500					# Minimal interval to Trigger build event
 interrupt_timout = 15				# Time to wait until force kill
 cmds = [
-	["go", "install"],
+	["go", "install", "./..."],
 	["go", "build"],
 	["./lib", "web"]
 ]									# Commands to run

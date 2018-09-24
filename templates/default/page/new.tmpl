@@ -24,6 +24,13 @@
 		</select>
 		<input type="text" name="date" value="{{.page.Date.Format "2006-01-02 15:04"}}" id="" class="form-control">
 	</div>
+	<div class="form-group">
+		<label for="">Прикрепить файлы</label>
+		<select name="bucket_id">
+			<option selected value="">Не прикреплять</option>{{ range .buckets }}
+			<option {{if eq $.page.BucketID .Id}}selected{{end}} value="{{.Id}}">{{.Title}}</option>{{end}}
+		</select>
+	</div>
 	<div style="display:none;" id="imgList">
 {{if .page.Image}}
 <input type="text" name="images[]" value="{{.page.Image}}">

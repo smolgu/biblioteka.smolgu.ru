@@ -22,6 +22,15 @@ type File struct {
 	Deleted time.Time `xorm:"deleted"`
 }
 
+func GetFile(id int64) (*File, error) {
+	f := new(File)
+	_, err := x.Id(id).Get(f)
+	if err != nil {
+		return nil, err
+	}
+	return f, nil
+}
+
 type FileCreateOptions struct {
 	BucketID int64
 	Title    string
@@ -46,7 +55,7 @@ func Upload(fileName string, data []byte, opts ...FileCreateOptions) (*File, err
 		Type:             1, //upload
 		BlobID:           id,
 		OriginalFileName: fileName,
-		Mime:             getMime(fileName),
+		Mime:             GetMime(fileName),
 		BucketID:         bucketID,
 		Title:            title,
 	}
@@ -57,7 +66,7 @@ func Upload(fileName string, data []byte, opts ...FileCreateOptions) (*File, err
 	return f, nil
 }
 
-func getMime(fName string) string {
+func GetMime(fName string) string {
 	switch filepath.Ext(fName) {
 	case ".pdf":
 		return "application/pdf"

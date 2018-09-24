@@ -16,7 +16,8 @@ import (
 func New(c *middleware.Context) {
 
 	var (
-		id = c.ParamsInt64(":id")
+		id       = c.ParamsInt64(":id")
+		bucketID = c.QueryInt64("bucket_id")
 
 		isNewPage = id == 0
 	)
@@ -31,12 +32,19 @@ func New(c *middleware.Context) {
 		c.Data["page"] = models.Page{Date: time.Now()}
 	}
 
+	buckets, err := models.BucketList(50)
+	if err != nil {
+		color.Red("%s", err)
+	}
+	c.Data["buckets"] = buckets
+
 	if c.Req.Method == "POST" {
 		p := new(models.Page)
 		p.Id = id
 		p.Title = c.QueryTrim("title")
 		p.Body = c.QueryTrim("body")
 		p.OldId = uniuri.New()
+		p.BucketID = bucketID
 		if c.QueryTrim("old_id") != "" {
 			p.OldId = c.QueryTrim("old_id")
 		}
@@ -145,5 +153,13 @@ func Get(c *middleware.Context) {
 	if e != nil {
 		color.Red("%s", e)
 	}
+	if p.BucketID != 0 {
+		bucket, err := models.BucketGet(p.BucketID)
+		if err != nil {
+			color.Red("%s", err)
+		}
+		c.Data["bucket"] = bucket
+	}
+
 	c.HTML(200, "page/get")
 }
