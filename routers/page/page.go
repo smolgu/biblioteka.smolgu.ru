@@ -32,7 +32,7 @@ func New(c *middleware.Context) {
 		c.Data["page"] = models.Page{Date: time.Now()}
 	}
 
-	buckets, err := models.BucketList(50)
+	buckets, err := models.BucketList(5)
 	if err != nil {
 		color.Red("%s", err)
 	}
