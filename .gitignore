@@ -1,4 +1,5 @@
 db.sqlite
+bolt.db
 sql.log
 conf/users.ini
 conf/app.ini

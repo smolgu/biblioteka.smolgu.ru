@@ -11,4 +11,5 @@ start:
 
 run: build start
 
-
+clean:
+	rm -rf log/users.log data/cache.db data/sessions data/bold.db data/ids data/vk.log data/db/pages.index data/db/users.kv data/db/db.sqlite data/db/kv.bolt data/db/users.sqlite data/bolt.db
