@@ -32,6 +32,7 @@ type encoder interface {
 	start() error
 	encodeState(s *builderNode, addr int) (int, error)
 	finish(count, rootAddr int) error
+	reset(w io.Writer)
 }
 
 func loadEncoder(ver int, w io.Writer) (encoder, error) {
@@ -48,7 +49,7 @@ func registerEncoder(ver int, cons encoderConstructor) {
 type decoder interface {
 	getRoot() int
 	getLen() int
-	stateAt(addr int) (fstState, error)
+	stateAt(addr int, prealloc fstState) (fstState, error)
 }
 
 func loadDecoder(ver int, data []byte) (decoder, error) {
