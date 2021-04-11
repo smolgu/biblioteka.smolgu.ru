@@ -4,6 +4,8 @@
 
 package models
 
+import "github.com/pkg/errors"
+
 type Version struct {
 	Id      int64
 	Version int
@@ -17,9 +19,10 @@ func GetVersion() (*Version, error) {
 		v.Version = 1
 		_, err = x.Insert(v)
 		if err != nil {
-			return v, err
+			return v, errors.Wrap(err, "insert new version")
 		}
 	}
+
 	return v, nil
 }
 

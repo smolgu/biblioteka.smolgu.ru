@@ -1,0 +1,14 @@
+build-linux:
+	GOOS=linux CGO_ENABLED=1 CC=x86_64-linux-musl-gcc CXX=x86_64-linux-musl-g++ go build -ldflags "-linkmode external -extldflags -static" -o smolgu-lib lib.go
+
+build:
+	go build -o smolgu-lib lib.go
+
+push:
+	rsync -avzph --progress ./ webmaster@51.158.171.85:/home/webmaster/apps/smolgu-lib/
+start:
+	PORT=3001 ./smolgu-lib web -c=./conf/app.ini
+
+run: build start
+
+

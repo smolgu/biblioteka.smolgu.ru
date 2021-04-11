@@ -15,7 +15,7 @@ func Migrate() error {
 	x.Sync2(&Version{})
 	v, err := GetVersion()
 	if err != nil {
-		return err
+		return errors.Wrap(err, "get version")
 	}
 	log.Printf("database_version=%d app_version=%d", v.Version, len(migrations)+1)
 	if v.Version < len(migrations)+1 {
@@ -23,7 +23,7 @@ func Migrate() error {
 			log.Printf("start migration: %s", m.Description)
 			err := m.Migration(x)
 			if err != nil {
-				return err
+				return errors.Wrap(err, "migrate")
 			}
 			err = IncVersion()
 			if err != nil {
@@ -31,6 +31,7 @@ func Migrate() error {
 			}
 		}
 	}
+
 	return nil
 }
 
@@ -42,6 +43,7 @@ var migrations = []struct {
 }
 
 func dropBucket(db *xorm.Engine) error {
-	_, err := db.Exec(`drop table bucket`)
-	return err
+	// omit error
+	_, _ = db.Exec(`drop table bucket`)
+	return nil
 }
