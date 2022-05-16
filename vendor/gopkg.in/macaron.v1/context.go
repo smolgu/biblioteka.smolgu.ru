@@ -31,8 +31,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Unknwon/com"
 	"github.com/go-macaron/inject"
+	"github.com/unknwon/com"
 	"golang.org/x/crypto/pbkdf2"
 )
 
@@ -162,12 +162,12 @@ func (ctx *Context) renderHTML(status int, setName, tplName string, data ...inte
 	}
 }
 
-// HTML calls Render.HTML but allows less arguments.
+// HTML renders the HTML with default template set.
 func (ctx *Context) HTML(status int, name string, data ...interface{}) {
 	ctx.renderHTML(status, DEFAULT_TPL_SET_NAME, name, data...)
 }
 
-// HTML calls Render.HTMLSet but allows less arguments.
+// HTMLSet renders the HTML with given template set name.
 func (ctx *Context) HTMLSet(status int, setName, tplName string, data ...interface{}) {
 	ctx.renderHTML(status, setName, tplName, data...)
 }
@@ -193,9 +193,9 @@ func (ctx *Context) parseForm() {
 	contentType := ctx.Req.Header.Get(_CONTENT_TYPE)
 	if (ctx.Req.Method == "POST" || ctx.Req.Method == "PUT") &&
 		len(contentType) > 0 && strings.Contains(contentType, "multipart/form-data") {
-		ctx.Req.ParseMultipartForm(MaxMemory)
+		_ = ctx.Req.ParseMultipartForm(MaxMemory)
 	} else {
-		ctx.Req.ParseForm()
+		_ = ctx.Req.ParseForm()
 	}
 }
 
@@ -260,9 +260,14 @@ func (ctx *Context) Params(name string) string {
 	return ctx.params[name]
 }
 
+// AllParams returns all params.
+func (ctx *Context) AllParams() Params {
+	return ctx.params
+}
+
 // SetParams sets value of param with given name.
 func (ctx *Context) SetParams(name, val string) {
-	if !strings.HasPrefix(name, ":") {
+	if name != "*" && !strings.HasPrefix(name, ":") {
 		name = ":" + name
 	}
 	ctx.params[name] = val
@@ -270,7 +275,7 @@ func (ctx *Context) SetParams(name, val string) {
 
 // ReplaceAllParams replace all current params with given params
 func (ctx *Context) ReplaceAllParams(params Params) {
-	ctx.params = params;
+	ctx.params = params
 }
 
 // ParamsEscape returns escapred params result.

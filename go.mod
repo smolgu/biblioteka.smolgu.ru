@@ -22,7 +22,6 @@ require (
 	github.com/go-macaron/cache v0.0.0-20151013081102-561735312776
 	github.com/go-macaron/gzip v0.0.0-20160222043647-cad1c6580a07
 	github.com/go-macaron/i18n v0.0.0-20160612092837-ef57533c3b0f
-	github.com/go-macaron/inject v0.0.0-20160627170012-d8a0b8677191 // indirect
 	github.com/go-macaron/session v0.0.0-20170320172209-b8e286a0dba8
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/go-xorm/builder v0.0.0-20180116065419-488224409dd8 // indirect
@@ -68,8 +67,8 @@ require (
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/gcfg.v1 v1.2.1 // indirect
 	gopkg.in/gomail.v2 v2.0.0-20150902115704-41f357289737 // indirect
-	gopkg.in/ini.v1 v1.32.0
-	gopkg.in/macaron.v1 v1.2.4
+	gopkg.in/ini.v1 v1.46.0
+	gopkg.in/macaron.v1 v1.3.7
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	rsc.io/pdf v0.0.0-20180112171046-225057252246
 )
