@@ -17,6 +17,9 @@ github.com/Unknwon/paginater
 # github.com/andybalholm/cascadia v0.0.0-20161224141413-349dd0209470
 ## explicit
 github.com/andybalholm/cascadia
+# github.com/aymerick/douceur v0.2.0
+github.com/aymerick/douceur/css
+github.com/aymerick/douceur/parser
 # github.com/blevesearch/bleve v1.0.14
 ## explicit
 github.com/blevesearch/bleve
@@ -140,6 +143,8 @@ github.com/go-xorm/xorm
 github.com/golang/protobuf/proto
 # github.com/golang/snappy v0.0.1
 github.com/golang/snappy
+# github.com/gorilla/css v1.0.0
+github.com/gorilla/css/scanner
 # github.com/hiteshmodha/goDevice v0.0.0-20170127191456-6bec48aa958b
 ## explicit
 github.com/hiteshmodha/goDevice
@@ -180,9 +185,10 @@ github.com/mattn/go-isatty
 # github.com/mattn/go-sqlite3 v1.6.0
 ## explicit
 github.com/mattn/go-sqlite3
-# github.com/microcosm-cc/bluemonday v0.0.0-20171222152607-542fd4642604
+# github.com/microcosm-cc/bluemonday v1.0.20
 ## explicit
 github.com/microcosm-cc/bluemonday
+github.com/microcosm-cc/bluemonday/css
 # github.com/mschoch/smat v0.2.0
 github.com/mschoch/smat
 # github.com/nfnt/resize v0.0.0-20160724205520-891127d8d1b5
@@ -284,15 +290,15 @@ golang.org/x/crypto/pbkdf2
 golang.org/x/image/bmp
 golang.org/x/image/tiff
 golang.org/x/image/tiff/lzw
-# golang.org/x/net v0.0.0-20201202161906-c7110b5ffcbb
+# golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b
 ## explicit
 golang.org/x/net/html
 golang.org/x/net/html/atom
-# golang.org/x/sys v0.0.0-20210112080510-489259a85091
+# golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# golang.org/x/text v0.3.3
+# golang.org/x/text v0.3.7
 golang.org/x/text/internal/language
 golang.org/x/text/internal/language/compact
 golang.org/x/text/internal/tag

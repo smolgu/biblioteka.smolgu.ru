@@ -40,7 +40,7 @@ require (
 	github.com/mattn/go-colorable v0.0.9 // indirect
 	github.com/mattn/go-isatty v0.0.3 // indirect
 	github.com/mattn/go-sqlite3 v1.6.0
-	github.com/microcosm-cc/bluemonday v0.0.0-20171222152607-542fd4642604
+	github.com/microcosm-cc/bluemonday v1.0.20
 	github.com/nfnt/resize v0.0.0-20160724205520-891127d8d1b5
 	github.com/onsi/ginkgo v1.16.1 // indirect
 	github.com/onsi/gomega v1.11.0 // indirect
@@ -64,7 +64,7 @@ require (
 	github.com/zhuharev/vkutil v0.0.0-20170924183017-4b057282a81b
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	golang.org/x/image v0.0.0-20171214225156-12117c17ca67
-	golang.org/x/net v0.0.0-20201202161906-c7110b5ffcbb
+	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/gcfg.v1 v1.2.1 // indirect
 	gopkg.in/gomail.v2 v2.0.0-20150902115704-41f357289737 // indirect
