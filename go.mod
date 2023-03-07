@@ -63,8 +63,8 @@ require (
 	github.com/zhuharev/vk v0.0.0-20170826005621-16699baa9c1f // indirect
 	github.com/zhuharev/vkutil v0.0.0-20170924183017-4b057282a81b
 	github.com/ziutek/mymysql v1.5.4 // indirect
-	golang.org/x/image v0.0.0-20171214225156-12117c17ca67
-	golang.org/x/net v0.0.0-20201202161906-c7110b5ffcbb
+	golang.org/x/image v0.5.0
+	golang.org/x/net v0.0.0-20220722155237-a158d28d115b
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/gcfg.v1 v1.2.1 // indirect
 	gopkg.in/gomail.v2 v2.0.0-20150902115704-41f357289737 // indirect
